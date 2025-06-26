@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "f9b310cf-5026-41d8-af7a-707ea900ad68",
+		"name": "MailVerifierPro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16143699"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/validate-email?email=ekobcode@emplawencon.com",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "app_local_dev_default_Zx81bV",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/validate-email?email=ekobcode@emplawencon.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"validate-email"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ekobcode@emplawencon.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
