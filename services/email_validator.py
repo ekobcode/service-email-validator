@@ -1,7 +1,6 @@
 import re
 import dns.resolver
 import socket
-import time
 import os
 
 
@@ -50,7 +49,6 @@ def validate_email_address(email: str) -> dict:
     }
 
     # Step 3: Resolve MX Records
-    mx_start_time = time.time()
     mx_records = []
     try:
         resolver = dns.resolver.Resolver()
