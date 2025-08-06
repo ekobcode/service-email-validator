@@ -1,0 +1,54 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Environment variable files
+.env
+.env.*
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# PyInstaller
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Docker
+*.log
+*.pid
+*.seed
+Dockerfile*
+docker-compose*.yml
+.env.docker
+docker-compose.override.yml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# FastAPI + Uvicorn log files
+logs/
+*.db
+*.sqlite3
+
+# Model artifacts (optional)
+rembg_model/

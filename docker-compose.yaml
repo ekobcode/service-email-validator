@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  service-email-validator:
+    image: service-email-validator:${RELEASE}
+    container_name: service-email-validator
+    ports:
+      - "8002:8000"
+    environment:
+      API_KEY_ENV: app_prod_0f8fad5b-d9cb-469f-a165-70867728950e_Y8a2XW
+    networks:
+      - local_network
+    restart: unless-stopped
+
+networks:
+  local_network:
+    external: true
