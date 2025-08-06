@@ -19,8 +19,6 @@ def get_public_ip_fallback():
         return None
 
 def validate_email_address(email: str) -> dict:
-    total_start_time = time.time()
-
     result = {
         "email": email,
         "status": False,
@@ -67,7 +65,6 @@ def validate_email_address(email: str) -> dict:
                 "ip_addresses": ip_list
             })
     except Exception:
-        mx_time = int((time.time() - mx_start_time) * 1000)
         result.update({
             "message": "No MX records found.",
             "data": {
