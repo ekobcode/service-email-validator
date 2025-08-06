@@ -2,6 +2,8 @@ import re
 import dns.resolver
 import socket
 import time
+import os
+
 
 EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
@@ -10,10 +12,14 @@ disposable_domains = {"10minutemail.com", "temp-mail.org", "mailinator.com"}
 free_email_providers = {"gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "mail.com"}
 role_based_prefixes = {"admin", "info", "support", "sales", "contact"}
 
+
 def get_public_ip_fallback():
     try:
+        dns_ip = os.getenv("FALLBACK_DNS_IP", "8.8.8.8")
+        dns_port = int(os.getenv("FALLBACK_DNS_PORT", "80"))
+
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-            s.connect(("8.8.8.8", 80))
+            s.connect((dns_ip, dns_port))
             return s.getsockname()[0]
     except Exception:
         return None
@@ -48,7 +54,8 @@ def validate_email_address(email: str) -> dict:
         resolver = dns.resolver.Resolver()
         resolver.timeout = 1.5
         resolver.lifetime = 2.5
-        resolver.nameservers = ["8.8.8.8", "1.1.1.1"]  # Google & Cloudflare DNS
+        dns_nameservers = os.getenv("DNS_NAMESERVERS", "8.8.8.8,1.1.1.1")
+        resolver.nameservers = [ip.strip() for ip in dns_nameservers.split(",") if ip.strip()]
         answers = resolver.resolve(domain, 'MX')
         for r in answers:
             mx_server = str(r.exchange).rstrip('.')

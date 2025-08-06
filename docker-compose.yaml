@@ -8,6 +8,9 @@ services:
       - "8002:8000"
     environment:
       API_KEY_ENV: app_prod_0f8fad5b-d9cb-469f-a165-70867728950e_Y8a2XW
+      FALLBACK_DNS_IP: "8.8.8.8"
+      FALLBACK_DNS_PORT: 80
+      DNS_NAMESERVERS: "8.8.8.8,1.1.1.1"
     networks:
       - local_network
     restart: unless-stopped
