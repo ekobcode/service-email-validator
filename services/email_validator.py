@@ -115,8 +115,6 @@ def validate_email_address(email: str) -> dict:
         })
         return result
 
-    mx_time = int((time.time() - mx_start_time) * 1000)
-
     # Step 4: Build Success Response
     result.update({
         "status": True,
