@@ -5,7 +5,9 @@ import time
 import os
 
 
-EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
+EMAIL_REGEX = re.compile(
+    r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+)
 
 # Contoh list disposable dan free provider sederhana
 disposable_domains = {"10minutemail.com", "temp-mail.org", "mailinator.com"}
