@@ -17,8 +17,8 @@ role_based_prefixes = {"admin", "info", "support", "sales", "contact"}
 
 def get_public_ip_fallback():
     try:
-        dns_ip = os.getenv("FALLBACK_DNS_IP", "8.8.8.8")
-        dns_port = int(os.getenv("FALLBACK_DNS_PORT", "80"))
+        dns_ip = os.getenv("FALLBACK_DNS_IP")
+        dns_port = int(os.getenv("FALLBACK_DNS_PORT"))
 
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
             s.connect((dns_ip, dns_port))
@@ -56,7 +56,7 @@ def validate_email_address(email: str) -> dict:
         resolver = dns.resolver.Resolver()
         resolver.timeout = 1.5
         resolver.lifetime = 2.5
-        dns_nameservers = os.getenv("DNS_NAMESERVERS", "8.8.8.8,1.1.1.1")
+        dns_nameservers = os.getenv("DNS_NAMESERVERS")
         resolver.nameservers = [ip.strip() for ip in dns_nameservers.split(",") if ip.strip()]
         answers = resolver.resolve(domain, 'MX')
         for r in answers:
